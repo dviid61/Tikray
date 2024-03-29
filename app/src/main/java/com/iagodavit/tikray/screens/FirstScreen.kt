@@ -55,22 +55,19 @@ class FirstScreen : ComponentActivity() {
 }
 
 
+fun progressBar(passwordText: String): List<Any> {
+    var lista: MutableList<Any> = mutableListOf(0, 0, " ")
 
-fun progressBar(passwordText:String):List<Any> {
-    var lista: MutableList<Any> = mutableListOf(0,0, " ")
-
-         var multiplicate:Double = passwordText.toDouble() * 0.10f
-        lista[0] = multiplicate
-        when (multiplicate){
-            in 0.10f.. 0.40f -> lista[1] = 1
-            in 0.41f.. 0.70f -> lista[1] = 2
-            in 0.71f..1f -> lista[1] = 3
-
+    var multiplicate: Double = passwordText.toDouble() * 0.10f
+    lista[0] = multiplicate
+    when (multiplicate) {
+        in 0.10f..0.40f -> lista[1] = 1
+        in 0.41f..0.70f -> lista[1] = 2
+        in 0.71f..1f -> lista[1] = 3
 
 
-
-        }
-        return lista
+    }
+    return lista
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -160,18 +157,18 @@ fun MainScreen() {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
 
         )
-         var lista = progressBar(passwordText)
+        var lista = progressBar(passwordText)
         var progres = lista[0].toString().toFloat()
         var colorr = lista[1].toString().toInt()
         LinearProgressIndicator(
             progress = progres,
-            trackColor = when(colorr){
+            trackColor = when (colorr) {
                 1 -> Color.Red
                 2 -> Color.Yellow
                 3 -> Color.Green
                 else -> Color.Gray
-            } ,
-             modifier = Modifier
+            },
+            modifier = Modifier
                 .constrainAs(lineProgress) {
                     top.linkTo(passwd.bottom, margin = 20.dp)
                     start.linkTo(passwd.start)
@@ -181,7 +178,7 @@ fun MainScreen() {
                 },
 
 
-        )
+            )
 
         OutlinedButton(
             modifier = Modifier.constrainAs(button) {
@@ -195,7 +192,6 @@ fun MainScreen() {
                 contentColor = colorResource(id = tikrayColor1),
                 containerColor = Color.White
             ),
-
 
 
             ) {
