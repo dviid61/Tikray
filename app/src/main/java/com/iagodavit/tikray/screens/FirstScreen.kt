@@ -10,17 +10,23 @@ import androidx.compose.foundation.layout.Box
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TextFieldDefaults.outlinedTextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -31,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.iagodavit.tikray.R
+import com.iagodavit.tikray.R.color.black
 import com.iagodavit.tikray.R.color.tikrayColor1
 import com.iagodavit.tikray.R.drawable.logo_empresa
 import com.iagodavit.tikray.screens.ui.theme.TikrayTheme
@@ -54,6 +61,7 @@ class FirstScreen : ComponentActivity() {
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen() {
 
@@ -62,9 +70,10 @@ fun MainScreen() {
             .fillMaxSize()
             .background(colorResource(id = tikrayColor1))
     ) {
-        val (title, logo, subtitle, user, passwd, button, button1) = createRefs()
+        val (title, logo, subtitle, mail, passwd, button, button1) = createRefs()
         val marginTop = createGuidelineFromTop(0.1f)
-        val psswdText by rememberSaveable {
+        val marginForLogin = createGuidelineFromTop(0.35f)
+        var mailText by rememberSaveable {
             mutableStateOf(" ")
         }
         Text(
@@ -87,12 +96,27 @@ fun MainScreen() {
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                     top.linkTo(title.bottom)
-                }, )
+                },
+        )
 
-        OutlinedTextField(value = psswdText , onValueChange = text ->  )
+        OutlinedTextField(
+            value = mailText,
+            onValueChange = { mailText = it },
+            label = { Text(text = "Mail") },
+            modifier = Modifier.constrainAs(mail) {
+                top.linkTo(logo.bottom, margin = 100.dp)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
 
 
+            },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = Color.White,
+            )
+        )
     }
+
+
 }
 
 
