@@ -162,12 +162,19 @@ fun MainScreen() {
         var colorr = lista[1].toString().toInt()
         LinearProgressIndicator(
             progress = progres,
+            color = when (colorr) {
+                3 -> Color.Red
+                1 -> Color.Yellow
+                2 -> Color.Green
+                else -> Color.Gray
+            },
             trackColor = when (colorr) {
                 1 -> Color.Red
                 2 -> Color.Yellow
                 3 -> Color.Green
                 else -> Color.Gray
             },
+
             modifier = Modifier
                 .constrainAs(lineProgress) {
                     top.linkTo(passwd.bottom, margin = 20.dp)
