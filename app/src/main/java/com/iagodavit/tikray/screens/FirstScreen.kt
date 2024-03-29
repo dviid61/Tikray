@@ -76,6 +76,9 @@ fun MainScreen() {
         var mailText by rememberSaveable {
             mutableStateOf(" ")
         }
+        var passwordText by rememberSaveable {
+            mutableStateOf("")
+        }
         Text(
             text = "TIKRAY",
             modifier = Modifier.constrainAs(title) {
@@ -102,7 +105,7 @@ fun MainScreen() {
         OutlinedTextField(
             value = mailText,
             onValueChange = { mailText = it },
-            label = { Text(text = "Mail") },
+            label = { Text(text = "Mailaaaaaaaaaaaa") },
             modifier = Modifier.constrainAs(mail) {
                 top.linkTo(logo.bottom, margin = 100.dp)
                 start.linkTo(parent.start)
@@ -111,7 +114,30 @@ fun MainScreen() {
 
             },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = Color.White,
+                unfocusedBorderColor = Color.White,
+                focusedBorderColor = Color.Gray,
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White
+
+            )
+        )
+        OutlinedTextField(
+            value = passwordText,
+            onValueChange = { passwordText = it },
+            label = { Text(text = "Password") },
+            modifier = Modifier.constrainAs(passwd) {
+                top.linkTo(mail.bottom, margin = 10.dp)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+
+
+            },
+            colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = Color.White,
+                focusedBorderColor = Color.Gray,
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White
+
             )
         )
     }
