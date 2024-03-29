@@ -1,4 +1,4 @@
-package com.iagodavit.tikray
+package com.iagodavit.tikray.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,9 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.iagodavit.tikray.ui.theme.TikrayTheme
+import com.iagodavit.tikray.screens.ui.theme.TikrayTheme
 
-class MainActivity : ComponentActivity() {
+class FirstScreen : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
