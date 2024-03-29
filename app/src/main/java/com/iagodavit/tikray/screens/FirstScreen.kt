@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.ColorRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 
@@ -16,12 +17,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.iagodavit.tikray.R
 import com.iagodavit.tikray.R.color.tikrayColor1
+import com.iagodavit.tikray.R.drawable.logo_empresa
 import com.iagodavit.tikray.screens.ui.theme.TikrayTheme
 import org.intellij.lang.annotations.JdkConstants
 
@@ -53,10 +58,25 @@ fun MainScreen() {
     ) {
         val (title, logo, subtitle, user, passwd, button, button1) = createRefs()
         val marginTop = createGuidelineFromTop(0.1f)
-        Text(text = "TIKRAY", modifier = Modifier.constrainAs(title) {
+        Text(
+            text = "TIKRAY",
+            modifier = Modifier.constrainAs(title) {
+                top.linkTo(marginTop)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
 
+            },
+            style = TextStyle(color = Color.White, fontSize = 42.sp, FontWeight.ExtraBold),
 
-        }, style = TextStyle(color = Color.White))
+            )
+        Image(
+            painter = painterResource(id = logo_empresa),
+            contentDescription = "logo de la empresa",
+            modifier = Modifier.constrainAs(logo) {
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+                top.linkTo(title.bottom)
+            })
 
 
     }
