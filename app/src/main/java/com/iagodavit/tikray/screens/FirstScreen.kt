@@ -58,7 +58,7 @@ class FirstScreen : ComponentActivity() {
 fun progressBar(passwordText: String): List<Any> {
     var lista: MutableList<Any> = mutableListOf(0, 0, " ")
 
-    var multiplicate: Double = passwordText.toDouble() * 0.10f
+    var multiplicate: Double = passwordText.length.toDouble() * 0.10f
     lista[0] = multiplicate
     when (multiplicate) {
         in 0.10f..0.40f -> lista[1] = 1
