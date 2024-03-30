@@ -1,5 +1,6 @@
 package com.iagodavit.tikray.screens
 
+import android.graphics.ColorMatrix
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,6 +26,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -34,6 +36,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Visibility
 import com.iagodavit.tikray.R
 import com.iagodavit.tikray.R.color.tikrayColor1
 import com.iagodavit.tikray.R.drawable.logo_empresa
@@ -166,15 +169,18 @@ fun MainScreen() {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
 
+
+
         Image(
             painter = painterResource(id = R.drawable.vis_on),
             contentDescription = null,
             modifier = Modifier
-                .constrainAs(icoVis){
+                .constrainAs(icoVis) {
                     top.linkTo(passwd.top)
                     bottom.linkTo(passwd.bottom)
                     end.linkTo(passwd.end)
                 }
+                .size(40.dp)
         )
 
         var lista = progressBar(passwordText)
@@ -224,6 +230,7 @@ fun MainScreen() {
 
 
         }
+
 
         Text(
             text = "Have you forgotten your pasword?",
