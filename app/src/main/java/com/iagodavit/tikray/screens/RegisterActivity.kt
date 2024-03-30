@@ -168,7 +168,7 @@ fun myApp(
             var password by remember { mutableStateOf("") }
             var typeNoPassword = convertTypePassword(password)
             OutlinedTextField(
-                Icon(painter =  , contentDescription = ),
+
                 value = typeNoPassword,
                 onValueChange = { password = it },
                 label = { Text(text = "Create password") },

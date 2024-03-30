@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -22,6 +23,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -146,8 +148,14 @@ fun MainScreen() {
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
 
         )
+
+        var showPass by remember { mutableStateOf(false) }
+
         OutlinedTextField(
-            value = convertTypePassword(passwordText),
+            value = if (!showPass){
+                convertTypePassword(passwordText)
+            } else {
+                   passwordText },
             onValueChange = { passwordText = it
                             },
             label = { Text(text = "Password") },
@@ -170,9 +178,11 @@ fun MainScreen() {
         )
 
 
-
         Image(
-            painter = painterResource(id = R.drawable.visibility_off),
+            painter = if (showPass == false) {
+                painterResource(id = R.drawable.visibility_off)
+            } else {
+                painterResource(id = R.drawable.visibility)},
             contentDescription = null,
             modifier = Modifier
                 .constrainAs(icoVis) {
@@ -180,7 +190,12 @@ fun MainScreen() {
                     bottom.linkTo(passwd.bottom)
                     end.linkTo(passwd.end)
                 }
-                .size(40.dp)
+                .padding(end = 10.dp, top = 8.dp)
+                .size(30.dp)
+                .clickable {
+                    showPass = !showPass
+                }
+
         )
 
         var lista = progressBar(passwordText)
