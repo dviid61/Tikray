@@ -92,7 +92,7 @@ fun homeScreen(modifier: Modifier = Modifier.fillMaxSize(), navController: NavCo
 
         Button(
             onClick = {
-                      navController.navigate(route = Screen.Login.route)
+                navController.navigate(route = Screen.Login.route)
             },
             modifier = Modifier
                 .constrainAs(login) {
@@ -114,9 +114,8 @@ fun homeScreen(modifier: Modifier = Modifier.fillMaxSize(), navController: NavCo
             )
         }
 
-
         Button(onClick = {
-                         navController.navigate(route = Screen.Register.route)
+            navController.navigate(route = Screen.Register.route)
         },
             modifier = Modifier
                 .constrainAs(register) {
