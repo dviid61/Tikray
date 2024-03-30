@@ -17,8 +17,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -126,36 +128,52 @@ fun myApp(
                 }
         ) {
 
+            val colors = OutlinedTextFieldDefaults.colors(
+                unfocusedBorderColor = Color.White,
+                focusedBorderColor = Color.Gray,
+                focusedTextColor = Color.White,
+                unfocusedTextColor = Color.White
+            )
+
             var name by remember { mutableStateOf("") }
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
                 label = { Text(text = "Name") },
+                colors = colors
             )
 
             var surname by remember { mutableStateOf("") }
             OutlinedTextField(
                 value = surname,
                 onValueChange = { surname = it },
-                label = { Text(text = "Surname") })
+                label = { Text(text = "Surname") },
+                colors = colors
+            )
 
             var email by remember { mutableStateOf("") }
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = { Text(text = "Email") })
+                label = { Text(text = "Email") },
+                colors = colors
+            )
 
             var date by remember { mutableStateOf("") }
             OutlinedTextField(
                 value = date,
                 onValueChange = { date = it },
-                label = { Text(text = "Birthday") })
+                label = { Text(text = "Birthday") },
+                colors = colors
+            )
 
             var phone by remember { mutableStateOf("") }
             OutlinedTextField(
                 value = phone,
                 onValueChange = { phone = it },
-                label = { Text(text = "Phone") })
+                label = { Text(text = "Phone") },
+                colors = colors
+            )
 
         }
 
