@@ -97,7 +97,7 @@ fun myApp(
     var colorr = lista[1].toString().toInt()
 
     val textInformationSecurityPasswd = when (colorr) {
-        1 -> "the password is very simple"
+        1 -> "the password is weak"
         2 -> "The password is not secure enough"
         3 -> "The password is secure"
         else -> " "
