@@ -180,7 +180,7 @@ fun MainScreen() {
             ),
             maxLines = 1,
             singleLine = true,
-            )
+        )
 
 
         Image(
