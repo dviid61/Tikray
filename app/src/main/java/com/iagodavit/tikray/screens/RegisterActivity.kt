@@ -57,9 +57,11 @@ class RegisterActivity : ComponentActivity() {
 }
 
 @Composable
-fun myApp(modifier: Modifier = Modifier
-    .fillMaxSize()
-    .background(Color(19, 18, 69))){
+fun myApp(
+    modifier: Modifier = Modifier
+        .fillMaxSize()
+        .background(Color(19, 18, 69))
+) {
 
     ConstraintLayout(modifier = modifier) {
 
@@ -74,17 +76,18 @@ fun myApp(modifier: Modifier = Modifier
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
-            }){
+            }) {
 
-            ConstraintLayout (modifier = Modifier.fillMaxSize()) {
+            ConstraintLayout(modifier = Modifier.fillMaxSize()) {
 
                 val (logo, title) = createRefs()
 
                 Image(painter = painterResource(
-                    id = R.drawable.logo_empresa),
+                    id = R.drawable.logo_empresa
+                ),
                     contentDescription = null,
                     modifier = Modifier
-                        .constrainAs(logo){
+                        .constrainAs(logo) {
                             top.linkTo(parent.top)
                             bottom.linkTo(parent.bottom)
                             start.linkTo(parent.start)
@@ -121,22 +124,38 @@ fun myApp(modifier: Modifier = Modifier
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }
-        ){
+        ) {
 
             var name by remember { mutableStateOf("") }
-            OutlinedTextField(value = name, onValueChange = {name = it}, label = { Text(text = "Name")})
+            OutlinedTextField(
+                value = name,
+                onValueChange = { name = it },
+                label = { Text(text = "Name") },
+            )
 
             var surname by remember { mutableStateOf("") }
-            OutlinedTextField(value = surname, onValueChange = {surname = it}, label = { Text(text = "Surname")})
+            OutlinedTextField(
+                value = surname,
+                onValueChange = { surname = it },
+                label = { Text(text = "Surname") })
 
             var email by remember { mutableStateOf("") }
-            OutlinedTextField(value = email, onValueChange = {email = it}, label = { Text(text = "Email")})
+            OutlinedTextField(
+                value = email,
+                onValueChange = { email = it },
+                label = { Text(text = "Email") })
 
             var date by remember { mutableStateOf("") }
-            OutlinedTextField(value = date, onValueChange = {date = it}, label = { Text(text = "Birthday")})
+            OutlinedTextField(
+                value = date,
+                onValueChange = { date = it },
+                label = { Text(text = "Birthday") })
 
             var phone by remember { mutableStateOf("") }
-            OutlinedTextField(value = phone, onValueChange = {phone = it}, label = { Text(text = "Phone")})
+            OutlinedTextField(
+                value = phone,
+                onValueChange = { phone = it },
+                label = { Text(text = "Phone") })
 
         }
 
@@ -148,9 +167,8 @@ fun myApp(modifier: Modifier = Modifier
                 bottom.linkTo(parent.bottom)
             }
             .size(150.dp, 60.dp)) {
-            Text(text = "Continue", fontSize = 25.sp)
+            Text(text = "Continue", fontSize = 20.sp)
         }
-
 
 
     }
@@ -158,6 +176,6 @@ fun myApp(modifier: Modifier = Modifier
 
 @Preview(showSystemUi = true)
 @Composable
-fun prevApp(){
+fun prevApp() {
     myApp()
 }
