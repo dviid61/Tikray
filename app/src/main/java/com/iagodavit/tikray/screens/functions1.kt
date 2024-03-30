@@ -1,4 +1,4 @@
-package com.iagodavit.tikray.screens.ui.theme
+package com.iagodavit.tikray.screens
 
 
 
@@ -19,4 +19,16 @@ fun progressBar(passwordText: String): List<Any> {
 
     }
     return lista
+}
+
+
+fun fieldNotEmpty(fieldA:String, fieldB:String): Boolean {
+    return if (fieldA.isEmpty() || fieldB.isEmpty()) {
+        false
+    }
+    else {
+        true
+    }
+
+
 }

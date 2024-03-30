@@ -10,7 +10,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LinearProgressIndicator
@@ -31,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -62,20 +65,6 @@ class FirstScreen : ComponentActivity() {
 }
 
 
-fun progressBar(passwordText: String): List<Any> {
-    var lista: MutableList<Any> = mutableListOf(0, 1, " ")
-
-    var multiplicate: Double = passwordText.length.toDouble() * 0.05f
-    lista[0] = multiplicate
-    when (multiplicate) {
-        in 0.09f..0.35f -> lista[1] = 1
-        in 0.36f..0.55f -> lista[1] = 2
-        in 0.56f..100f -> lista[1] = 3
-
-
-    }
-    return lista
-}
 
 fun convertTypePassword(texto: String): String {
     val asterisc: String = "*"
@@ -152,6 +141,8 @@ fun MainScreen() {
 
         var showPass by remember { mutableStateOf(false) }
         var realPass by remember { mutableStateOf("") }
+        val isEmpty = fieldNotEmpty(mailText,realPass)
+
 
         OutlinedTextField(
             value = if (!showPass) {
@@ -233,7 +224,7 @@ fun MainScreen() {
 
             )
 
-        OutlinedButton(
+        Button(
             modifier = Modifier.constrainAs(button) {
                 top.linkTo(passwd.bottom, margin = 65.dp)
                 start.linkTo(parent.start)
@@ -243,8 +234,14 @@ fun MainScreen() {
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(
                 contentColor = colorResource(id = tikrayColor1),
-                containerColor = Color.White
+                containerColor = Color.White,
+                disabledContainerColor = Color.Gray
+
+
+
             ),
+            enabled = isEmpty
+
 
 
             ) {
@@ -254,8 +251,9 @@ fun MainScreen() {
         }
 
 
-        Text(
-            text = "Have you forgotten your pasword?",
+        ClickableText(
+            text = (AnnotatedString("Have you forgotten your pasword?")),
+            onClick = {/* TODO */},
             modifier = Modifier
                 .constrainAs(forgotpass) {
                     top.linkTo(button.bottom)
@@ -263,7 +261,8 @@ fun MainScreen() {
                     end.linkTo(parent.end)
                 }
                 .padding(top = 19.dp),
-            color = Color.DarkGray
+               style = TextStyle(Color.DarkGray)
+
         )
 
     }

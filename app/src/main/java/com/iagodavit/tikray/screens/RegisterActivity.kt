@@ -12,10 +12,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -46,7 +44,7 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.iagodavit.tikray.R
 import com.iagodavit.tikray.screens.ui.theme.TikrayTheme
-import com.iagodavit.tikray.screens.ui.theme.progressBar
+import com.iagodavit.tikray.screens.progressBar
 import kotlin.io.encoding.Base64
 
 class RegisterActivity : ComponentActivity() {
@@ -112,6 +110,7 @@ fun myApp(
     ConstraintLayout(modifier = modifier) {
 
         val (logo, entryFields, btns, progressLine) = createRefs()
+        val hola = 20
 
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -121,7 +120,7 @@ fun myApp(
             .constrainAs(logo) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
-                end.linkTo(parent.end),
+                end.linkTo(parent.end)
             }) {
 
             ConstraintLayout(modifier = Modifier.fillMaxSize()) {
