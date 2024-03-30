@@ -76,9 +76,10 @@ fun progressBar(passwordText: String): List<Any> {
     }
     return lista
 }
-fun convertTypePassword(texto: String):String{
-        val asterisc:String = "*"
-        val operation = asterisc.repeat(texto.length)
+
+fun convertTypePassword(texto: String): String {
+    val asterisc: String = "*"
+    val operation = asterisc.repeat(texto.length)
     return operation
 }
 
@@ -97,7 +98,7 @@ fun MainScreen() {
         var mailText by rememberSaveable {
             mutableStateOf(" ")
         }
-        var passwordText by rememberSaveable {
+        var passwordText by remember {
             mutableStateOf("")
         }
         Text(
@@ -123,7 +124,7 @@ fun MainScreen() {
                 },
         )
 
-        val (icoMail, icoPass, icoVis ) = createRefs()
+        val (icoMail, icoPass, icoVis) = createRefs()
 
         OutlinedTextField(
             value = mailText,
@@ -150,14 +151,22 @@ fun MainScreen() {
         )
 
         var showPass by remember { mutableStateOf(false) }
+        val maxChar = 25
+        var realPass by remember {
+            mutableStateOf("")
+        }
 
         OutlinedTextField(
-            value = if (!showPass){
-                convertTypePassword(passwordText)
+            value = if (!showPass) {
+                convertTypePassword(realPass)
             } else {
-                   passwordText },
-            onValueChange = { passwordText = it
-                            },
+                realPass
+            },
+            onValueChange = {
+                if (it.length <= maxChar) {
+                    realPass = realPass + it.last()
+                }
+            },
             label = { Text(text = "Password") },
             modifier = Modifier.constrainAs(passwd) {
                 top.linkTo(mail.bottom, margin = 10.dp)
@@ -174,15 +183,17 @@ fun MainScreen() {
             ),
             maxLines = 1,
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
-        )
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+
+            )
 
 
         Image(
             painter = if (showPass == false) {
                 painterResource(id = R.drawable.visibility_off)
             } else {
-                painterResource(id = R.drawable.visibility)},
+                painterResource(id = R.drawable.visibility)
+            },
             contentDescription = null,
             modifier = Modifier
                 .constrainAs(icoVis) {
@@ -211,8 +222,9 @@ fun MainScreen() {
             },
             trackColor = when (progres) {
                 in 0.0f..0.09f -> Color.Transparent
-                 in 0.1f..100f -> Color.White
-                else -> Color.Gray},
+                in 0.1f..100f -> Color.White
+                else -> Color.Gray
+            },
 
             modifier = Modifier
                 .constrainAs(lineProgress) {
