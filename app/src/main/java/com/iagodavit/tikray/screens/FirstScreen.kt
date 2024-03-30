@@ -172,7 +172,7 @@ fun MainScreen() {
 
 
         Image(
-            painter = painterResource(id = R.drawable.vis_on),
+            painter = painterResource(id = R.drawable.visi),
             contentDescription = null,
             modifier = Modifier
                 .constrainAs(icoVis) {
