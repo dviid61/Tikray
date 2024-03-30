@@ -56,14 +56,14 @@ class FirstScreen : ComponentActivity() {
 
 
 fun progressBar(passwordText: String): List<Any> {
-    var lista: MutableList<Any> = mutableListOf(0, 0, " ")
+    var lista: MutableList<Any> = mutableListOf(0, 1, " ")
 
-    var multiplicate: Double = passwordText.length.toDouble() * 0.10f
+    var multiplicate: Double = passwordText.length.toDouble() * 0.05f
     lista[0] = multiplicate
     when (multiplicate) {
-        in 0.10f..0.40f -> lista[1] = 1
-        in 0.41f..0.70f -> lista[1] = 2
-        in 0.71f..1f -> lista[1] = 3
+        in 0.09f..0.35f -> lista[1] = 1
+        in 0.36f..0.55f -> lista[1] = 2
+        in 0.56f..100f -> lista[1] = 3
 
 
     }
@@ -136,7 +136,8 @@ fun MainScreen() {
         )
         OutlinedTextField(
             value = passwordText,
-            onValueChange = { passwordText = it },
+            onValueChange = { passwordText = it
+                            },
             label = { Text(text = "Password") },
             modifier = Modifier.constrainAs(passwd) {
                 top.linkTo(mail.bottom, margin = 10.dp)
@@ -154,8 +155,7 @@ fun MainScreen() {
             ),
             maxLines = 1,
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
-
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
         )
         var lista = progressBar(passwordText)
         var progres = lista[0].toString().toFloat()
@@ -163,17 +163,13 @@ fun MainScreen() {
         LinearProgressIndicator(
             progress = progres,
             color = when (colorr) {
-                3 -> Color.Red
-                1 -> Color.Yellow
-                2 -> Color.Green
-                else -> Color.Gray
-            },
-            trackColor = when (colorr) {
                 1 -> Color.Red
                 2 -> Color.Yellow
                 3 -> Color.Green
                 else -> Color.Gray
             },
+            trackColor = Color.White
+            ,
 
             modifier = Modifier
                 .constrainAs(lineProgress) {
