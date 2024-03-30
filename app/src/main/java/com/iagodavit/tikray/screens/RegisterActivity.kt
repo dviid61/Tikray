@@ -61,7 +61,6 @@ class RegisterActivity : ComponentActivity() {
 }
 
 
-
 fun checkTextFields(
     name: String,
     surname: String,
@@ -99,7 +98,7 @@ fun myApp(
     var progres = lista[0].toString().toFloat()
     var colorr = lista[1].toString().toInt()
 
-    val  textInformationSecurityPasswd = when (colorr) {
+    val textInformationSecurityPasswd = when (colorr) {
         1 -> "the password is very simple"
         2 -> "The password is not secure enough"
         3 -> "The password is secure"
@@ -143,7 +142,7 @@ fun myApp(
                 )
 
                 Text(
-                    text = "Sign up",
+                    text = "SIGN UP",
                     style = TextStyle(color = Color.White, fontSize = 42.sp, FontWeight.ExtraBold),
                     modifier = Modifier
                         .constrainAs(title) {
@@ -235,14 +234,15 @@ fun myApp(
                 },
 
 
-
-
                 )
-            Text(text = textInformationSecurityPasswd, color =  when (colorr) {
-                1 -> Color.Red
-                2 -> Color.Yellow
-                3 -> Color.Green
-                else -> Color.Gray} )
+            Text(
+                text = textInformationSecurityPasswd, color = when (colorr) {
+                    1 -> Color.Red
+                    2 -> Color.Yellow
+                    3 -> Color.Green
+                    else -> Color.Gray
+                },
+            )
 
 
             OutlinedTextField(
