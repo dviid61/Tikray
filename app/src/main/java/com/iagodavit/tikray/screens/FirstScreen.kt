@@ -155,7 +155,7 @@ fun MainScreen() {
             ),
             maxLines = 1,
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
         var lista = progressBar(passwordText)
         var progres = lista[0].toString().toFloat()
