@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.modifier.modifierLocalOf
@@ -94,7 +96,7 @@ fun myApp(modifier: Modifier = Modifier
                     text = "Sign up",
                     style = TextStyle(color = Color.White, fontSize = 42.sp, FontWeight.ExtraBold),
                     modifier = Modifier
-                        .constrainAs(title){
+                        .constrainAs(title) {
                             bottom.linkTo(parent.bottom)
                             top.linkTo(parent.top)
                             start.linkTo(logo.end)
@@ -107,16 +109,35 @@ fun myApp(modifier: Modifier = Modifier
 
         }
 
-        Column(modifier = Modifier
-            .fillMaxWidth()
-            .height(500.dp)
-            .padding(horizontal = 20.dp)
-            .background(Color.Yellow)
-            .constrainAs(entryFields) {
-                top.linkTo(logo.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
-            }){
+        Column(
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(500.dp)
+                .padding(horizontal = 20.dp)
+                .constrainAs(entryFields) {
+                    top.linkTo(logo.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+        ){
+
+            var name by remember { mutableStateOf("") }
+            OutlinedTextField(value = name, onValueChange = {name = it}, label = { Text(text = "Name")})
+
+            var surname by remember { mutableStateOf("") }
+            OutlinedTextField(value = surname, onValueChange = {surname = it}, label = { Text(text = "Surname")})
+
+            var email by remember { mutableStateOf("") }
+            OutlinedTextField(value = email, onValueChange = {email = it}, label = { Text(text = "Email")})
+
+            var date by remember { mutableStateOf("") }
+            OutlinedTextField(value = date, onValueChange = {date = it}, label = { Text(text = "Birthday")})
+
+            var phone by remember { mutableStateOf("") }
+            OutlinedTextField(value = phone, onValueChange = {phone = it}, label = { Text(text = "Phone")})
+
         }
 
         Button(onClick = { /*TODO*/ }, modifier = Modifier
@@ -126,7 +147,8 @@ fun myApp(modifier: Modifier = Modifier
                 end.linkTo(parent.end)
                 bottom.linkTo(parent.bottom)
             }
-            .size(200.dp, 60.dp)) {
+            .size(150.dp, 60.dp)) {
+            Text(text = "Continue", fontSize = 25.sp)
         }
 
 
