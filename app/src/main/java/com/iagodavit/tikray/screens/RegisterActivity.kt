@@ -92,7 +92,7 @@ fun myApp(
     var surname by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
 
-    var lista = progressBar(password)
+    var lista = progressBar(passwordText)
     var progres = lista[0].toString().toFloat()
     var colorr = lista[1].toString().toInt()
 
