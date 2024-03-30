@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ButtonDefaults
@@ -84,7 +85,7 @@ fun MainScreen() {
             .fillMaxSize()
             .background(colorResource(id = tikrayColor1))
     ) {
-        val (title, logo, subtitle, mail, passwd, button, button1, lineProgress) = createRefs()
+        val (title, logo, subtitle, mail, passwd, button, button1, lineProgress, forgotpass) = createRefs()
         val marginTop = createGuidelineFromTop(0.1f)
         val marginForLogin = createGuidelineFromTop(0.35f)
         var mailText by rememberSaveable {
@@ -209,6 +210,19 @@ fun MainScreen() {
 
 
         }
+
+        Text(
+            text = "Have you forgotten your pasword?",
+            modifier = Modifier
+                .constrainAs(forgotpass){
+                    top.linkTo(button.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+                .padding(top = 19.dp),
+            color = Color.DarkGray
+        )
+
     }
 
 

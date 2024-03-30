@@ -2,4 +2,6 @@
     <string name="app_name">Tikray</string>
     <string name="title_activity_first_screen">FirstScreen</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_main">MainActivity</string>
 </resources>
