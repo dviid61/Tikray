@@ -69,6 +69,11 @@ fun progressBar(passwordText: String): List<Any> {
     }
     return lista
 }
+fun convertTypePassword(texto: String):String{
+        val asterisc:String = "*"
+        val operation = asterisc.repeat(texto.length)
+    return operation
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -135,7 +140,7 @@ fun MainScreen() {
 
         )
         OutlinedTextField(
-            value = passwordText,
+            value = convertTypePassword(passwordText),
             onValueChange = { passwordText = it
                             },
             label = { Text(text = "Password") },
@@ -168,8 +173,10 @@ fun MainScreen() {
                 3 -> Color.Green
                 else -> Color.Gray
             },
-            trackColor = Color.White
-            ,
+            trackColor = when (progres) {
+                in 0.0f..0.09f -> Color.Transparent
+                 in 0.1f..100f -> Color.White
+                else -> Color.Gray},
 
             modifier = Modifier
                 .constrainAs(lineProgress) {
