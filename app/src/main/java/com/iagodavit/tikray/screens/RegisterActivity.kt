@@ -58,7 +58,7 @@ class RegisterActivity : ComponentActivity() {
     }
 }
 
-
+val iago = "iago"
 fun checkTextFields(
     name: String,
     surname: String,
@@ -92,7 +92,7 @@ fun myApp(
     var surname by remember { mutableStateOf("") }
     var name by remember { mutableStateOf("") }
 
-    var lista = progressBar(passwordText)
+    var lista = progressBar(password)
     var progres = lista[0].toString().toFloat()
     var colorr = lista[1].toString().toInt()
 
