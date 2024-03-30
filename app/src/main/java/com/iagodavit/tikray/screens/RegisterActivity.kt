@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
@@ -167,9 +168,10 @@ fun myApp(
             var password by remember { mutableStateOf("") }
             var typeNoPassword = convertTypePassword(password)
             OutlinedTextField(
+                Icon(painter =  , contentDescription = ),
                 value = typeNoPassword,
                 onValueChange = { password = it },
-                label = { Text(text = "Birthday") },
+                label = { Text(text = "Create password") },
                 colors = colors
 
             )
@@ -180,7 +182,7 @@ fun myApp(
             OutlinedTextField(
                 value = typeNoPasswordd,
                 onValueChange = { confirmPassword = it },
-                label = { Text(text = "Phone") },
+                label = { Text(text = "Confirm Password") },
                 colors = colors
             )
 
