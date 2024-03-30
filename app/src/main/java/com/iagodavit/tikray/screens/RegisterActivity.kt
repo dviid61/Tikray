@@ -1,5 +1,6 @@
 package com.iagodavit.tikray.screens
 
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -57,6 +58,10 @@ class RegisterActivity : ComponentActivity() {
         }
     }
 }
+
+
+
+
 
 @Composable
 fun myApp(
@@ -159,18 +164,22 @@ fun myApp(
                 colors = colors
             )
 
-            var date by remember { mutableStateOf("") }
+            var password by remember { mutableStateOf("") }
+            var typeNoPassword = convertTypePassword(password)
             OutlinedTextField(
-                value = date,
-                onValueChange = { date = it },
+                value = typeNoPassword,
+                onValueChange = { password = it },
                 label = { Text(text = "Birthday") },
                 colors = colors
+
             )
 
-            var phone by remember { mutableStateOf("") }
+            var confirmPassword by remember { mutableStateOf("") }
+            var typeNoPasswordd = convertTypePassword(confirmPassword)
+
             OutlinedTextField(
-                value = phone,
-                onValueChange = { phone = it },
+                value = typeNoPasswordd,
+                onValueChange = { confirmPassword = it },
                 label = { Text(text = "Phone") },
                 colors = colors
             )
