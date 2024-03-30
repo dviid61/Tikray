@@ -121,7 +121,7 @@ fun myApp(
             .constrainAs(logo) {
                 top.linkTo(parent.top)
                 start.linkTo(parent.start)
-                end.linkTo(parent.end)
+                end.linkTo(parent.end),
             }) {
 
             ConstraintLayout(modifier = Modifier.fillMaxSize()) {
