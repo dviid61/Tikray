@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.iagodavit.tikray.R
 import com.iagodavit.tikray.R.color.tikrayColor1
 import com.iagodavit.tikray.R.drawable.logo_empresa
 import com.iagodavit.tikray.screens.ui.theme.TikrayTheme
@@ -117,6 +118,8 @@ fun MainScreen() {
                 },
         )
 
+        val (icoMail, icoPass, icoVis ) = createRefs()
+
         OutlinedTextField(
             value = mailText,
             onValueChange = { mailText = it },
@@ -150,7 +153,6 @@ fun MainScreen() {
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
 
-
             },
             colors = OutlinedTextFieldDefaults.colors(
                 unfocusedBorderColor = Color.White,
@@ -163,6 +165,18 @@ fun MainScreen() {
             singleLine = true,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
         )
+
+        Image(
+            painter = painterResource(id = R.drawable.vis_on),
+            contentDescription = null,
+            modifier = Modifier
+                .constrainAs(icoVis){
+                    top.linkTo(passwd.top)
+                    bottom.linkTo(passwd.bottom)
+                    end.linkTo(passwd.end)
+                }
+        )
+
         var lista = progressBar(passwordText)
         var progres = lista[0].toString().toFloat()
         var colorr = lista[1].toString().toInt()
@@ -214,7 +228,7 @@ fun MainScreen() {
         Text(
             text = "Have you forgotten your pasword?",
             modifier = Modifier
-                .constrainAs(forgotpass){
+                .constrainAs(forgotpass) {
                     top.linkTo(button.bottom)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
