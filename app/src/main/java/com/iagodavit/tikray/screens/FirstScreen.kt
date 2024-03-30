@@ -151,10 +151,7 @@ fun MainScreen() {
         )
 
         var showPass by remember { mutableStateOf(false) }
-        val maxChar = 25
-        var realPass by remember {
-            mutableStateOf("")
-        }
+        var realPass by remember { mutableStateOf("") }
 
         OutlinedTextField(
             value = if (!showPass) {
@@ -163,8 +160,8 @@ fun MainScreen() {
                 realPass
             },
             onValueChange = {
-                if (it.length <= maxChar) {
-                    realPass = realPass + it.last()
+                if (it.length <= 25) {
+                    realPass += it.last()
                 }
             },
             label = { Text(text = "Password") },
@@ -183,8 +180,6 @@ fun MainScreen() {
             ),
             maxLines = 1,
             singleLine = true,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-
             )
 
 
